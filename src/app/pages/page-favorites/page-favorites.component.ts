@@ -15,6 +15,7 @@ export class PageFavoritesComponent {
   route = inject(ActivatedRoute);
   favorites: Product[] = [];
   reset: Product[] = [];
+  category: string = '';
 
   ngOnInit() {
     this.favorites = this.productService.getFavorites();
@@ -23,28 +24,31 @@ export class PageFavoritesComponent {
         value.favorite = true;
         return value;
       });
-      this.reset = this.favorites;
+      this.reset = [...this.favorites];
     }
 
     this.route.queryParams.subscribe((params: Params) => {
-      const category = params['category'];
-      if (category !== 'all' && category) {
-        this.favorites = this.reset;
-        this.favorites = this.reset.filter(
-          (value) => value.category === category
-        );
+      this.category = params['category'];
+      if (this.category && this.category !== 'all') {
+        this.favorites = [
+          ...this.reset.filter((value) => value.category === this.category),
+        ];
       } else {
         this.favorites = this.reset;
       }
-
-      this.favorites.map((value) => {
-        value.favorite = true;
-        return value;
-      });
     });
   }
 
-  onFavorite(product: Product) {
-    this.favorites = this.favorites.filter((value) => value.id !== product.id);
+  removeFavorite(product: Product) {
+    this.reset = [...this.reset.filter((value) => value.id !== product.id)];
+    if (this.category && this.category !== 'all') {
+      this.favorites = [
+        ...this.reset.filter(
+          (value) => value.category === this.category && value.id !== product.id
+        ),
+      ];
+    } else {
+      this.favorites = this.reset;
+    }
   }
 }

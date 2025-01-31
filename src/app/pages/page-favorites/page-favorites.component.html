@@ -1,7 +1,7 @@
 @if (favorites) {
 <section>
   @for (product of favorites; track $index) {
-  <app-card [product]="product" (favorite)="onFavorite(product)" />
+  <app-card [product]="product" (removeFavorite)="removeFavorite(product)" />
   }@empty {
   <div class="empty">This list is empty.</div>
   }
