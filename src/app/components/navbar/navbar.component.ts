@@ -1,5 +1,11 @@
 import { Component, inject } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import {
+  ActivatedRoute,
+  Params,
+  Router,
+  RouterLink,
+  RouterLinkActive,
+} from '@angular/router';
 import { MatSelectModule } from '@angular/material/select';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -22,14 +28,28 @@ import { Observable } from 'rxjs';
   styleUrl: './navbar.component.scss',
 })
 export class NavbarComponent {
-  toppings = new FormControl<string>('');
-  toppingList$!: Observable<Category[]>;
+  category = new FormControl<string>('');
+  categoryList$!: Observable<Category[]>;
   productService = inject(ProductService);
+  router = inject(Router);
+  route = inject(ActivatedRoute);
 
   ngOnInit() {
-    this.toppingList$ = this.productService.getCategories();
-    this.toppings.valueChanges.subscribe((value) => {
-      if (value) this.productService.category.set(value);
+    this.route.queryParams.subscribe((params: Params) => {
+      const category = params['category'];
+      if (category !== 'all') {
+        this.category.setValue(category);
+      }
+    });
+
+    this.categoryList$ = this.productService.getCategories();
+  }
+
+  onChange() {
+    this.router.navigate([], {
+      queryParams: {
+        category: this.category.value,
+      },
     });
   }
 }

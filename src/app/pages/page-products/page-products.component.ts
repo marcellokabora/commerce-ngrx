@@ -1,30 +1,31 @@
-import { Component, effect, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { ProductsComponent } from '../../components/products/products.component';
 import { Observable } from 'rxjs';
 import { Product, ProductService } from '../../services/product.service';
-import { AsyncPipe, JsonPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-page-products',
-  imports: [JsonPipe, AsyncPipe, MatProgressSpinnerModule],
+  imports: [ProductsComponent, AsyncPipe, MatProgressSpinnerModule],
   templateUrl: './page-products.component.html',
   styleUrl: './page-products.component.scss',
 })
 export class PageProductsComponent {
   products$!: Observable<Product[]>;
-  favorites: string[] | undefined;
   productService = inject(ProductService);
-
-  constructor() {
-    effect(() => {
-      if (this.productService.category())
-        this.products$ = this.productService.getProducts();
-    });
-  }
+  route = inject(ActivatedRoute);
 
   ngOnInit() {
     this.products$ = this.productService.getProducts();
-    this.productService.getFavorites();
-    this.favorites = this.productService.favorites;
+    this.route.queryParams.subscribe((params: Params) => {
+      const category = params['category'];
+      if (category !== 'all') {
+        this.products$ = this.productService.getProducts(category);
+      } else {
+        this.products$ = this.productService.getProducts();
+      }
+    });
   }
 }

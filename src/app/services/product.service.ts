@@ -8,15 +8,12 @@ import { delay, map, Observable } from 'rxjs';
 export class ProductService {
   apiUrl = 'https://dummyjson.com/products';
   httpClient = inject(HttpClient);
-  category = signal<string>('all');
 
-  getProducts(): Observable<Product[]> {
+  getProducts(category?: string): Observable<Product[]> {
     let url = `${this.apiUrl}/?limit=50`;
-    if (this.category() !== 'all') {
-      url = `${this.apiUrl}/category/${this.category()}`;
+    if (category) {
+      url = `${this.apiUrl}/category/${category}`;
     }
-    console.log(url);
-
     return this.httpClient
       .get<Product[]>(url)
       .pipe(map((value: any) => value.products));

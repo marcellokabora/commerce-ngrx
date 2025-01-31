@@ -1,0 +1,21 @@
+<h2 mat-dialog-title>{{ product.title }}</h2>
+<mat-dialog-content class="mat-typography">
+  <div class="info">{{ product.description }}</div>
+  @for (image of product.images; track $index) {
+  <img [src]="image" alt="" />
+  }
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <div class="flex">
+    <span class="data"><mat-icon>euro</mat-icon> {{ product.price }}</span>
+    <span class="data"><mat-icon>inventory</mat-icon> {{ product.stock }}</span>
+  </div>
+
+  <div>
+    <button mat-button mat-dialog-close cdkFocusInitial (click)="onFavorite()">
+      {{ product.favorite ? "Remove" : "Add" }} Favorite
+    </button>
+    <button mat-button mat-dialog-close>Close</button>
+  </div>
+</mat-dialog-actions>

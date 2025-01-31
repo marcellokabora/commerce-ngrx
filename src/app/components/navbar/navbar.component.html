@@ -1,6 +1,6 @@
 <nav>
   <div class="asidel">
-    <a routerLink="/"><img src="playtestcloud.svg" alt="" /></a>
+    <a routerLink="/"><img src="playtestcloud.svg" alt="PlaytestCloud" /></a>
     <a routerLink="/products" routerLinkActive="active">Products</a>
     <a routerLink="/favorites" routerLinkActive="active">Favorites</a>
   </div>
@@ -8,10 +8,10 @@
     <div class="label">Filter</div>
     <mat-form-field appearance="outline">
       <mat-label>Categories</mat-label>
-      <mat-select [formControl]="toppings">
+      <mat-select [formControl]="category" (selectionChange)="onChange()">
         <mat-option value="all">All</mat-option>
-        @for (topping of toppingList$ | async; track topping) {
-        <mat-option [value]="topping.slug">{{ topping.name }}</mat-option>
+        @for (category of categoryList$ | async; track category) {
+        <mat-option [value]="category.slug">{{ category.name }}</mat-option>
         }
       </mat-select>
     </mat-form-field>
