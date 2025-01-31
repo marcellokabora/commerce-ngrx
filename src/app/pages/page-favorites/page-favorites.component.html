@@ -1,0 +1,7 @@
+@let products = products$ | async; @if (products) {
+{{ products | json }}
+} @else {
+<div class="loading">
+  <mat-spinner diameter="70"></mat-spinner>
+</div>
+}
