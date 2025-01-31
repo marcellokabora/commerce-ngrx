@@ -1,5 +1,11 @@
 @let products = products$ | async; @if (products) {
-<app-products [products]="products"></app-products>
+<section>
+  @for (product of products$ | async; track $index) {
+  <app-card [product]="product" />
+  }@empty {
+  <div class="empty">This list is empty.</div>
+  }
+</section>
 } @else {
 <div class="loading">
   <mat-spinner diameter="70"></mat-spinner>

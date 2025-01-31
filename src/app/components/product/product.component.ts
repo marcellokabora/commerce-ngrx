@@ -16,5 +16,9 @@ export class ProductComponent {
   product: Product = this.data.product;
   productService = inject(ProductService);
 
-  onFavorite() {}
+  onFavorite() {
+    this.product.favorite
+      ? this.productService.removeFavorites(this.product)
+      : this.productService.addFavorites(this.product);
+  }
 }

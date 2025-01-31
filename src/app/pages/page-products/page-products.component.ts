@@ -1,14 +1,14 @@
 import { Component, inject } from '@angular/core';
-import { ProductsComponent } from '../../components/products/products.component';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Product, ProductService } from '../../services/product.service';
 import { AsyncPipe } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ActivatedRoute, Params } from '@angular/router';
+import { CardComponent } from '../../components/card/card.component';
 
 @Component({
   selector: 'app-page-products',
-  imports: [ProductsComponent, AsyncPipe, MatProgressSpinnerModule],
+  imports: [AsyncPipe, MatProgressSpinnerModule, CardComponent],
   templateUrl: './page-products.component.html',
   styleUrl: './page-products.component.scss',
 })
@@ -18,14 +18,31 @@ export class PageProductsComponent {
   route = inject(ActivatedRoute);
 
   ngOnInit() {
-    this.products$ = this.productService.getProducts();
+    this.products$ = this.getProductFavotites();
+
     this.route.queryParams.subscribe((params: Params) => {
       const category = params['category'];
       if (category !== 'all') {
-        this.products$ = this.productService.getProducts(category);
+        this.products$ = this.getProductFavotites(category);
       } else {
-        this.products$ = this.productService.getProducts();
+        this.products$ = this.getProductFavotites();
       }
     });
+  }
+
+  getProductFavotites(category?: string): Observable<Product[]> {
+    return this.productService.getProducts(category).pipe(
+      map((value: Product[]) => {
+        value.map((product) => {
+          if (this.productService.favorites) {
+            product.favorite = this.productService.favorites
+              .map((item) => item.id)
+              .includes(product.id);
+          }
+          return product;
+        });
+        return value;
+      })
+    );
   }
 }

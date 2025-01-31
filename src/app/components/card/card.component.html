@@ -1,0 +1,23 @@
+@let product = this.product(); @if (product) {
+<div class="product" (click)="viewProduct(product)">
+  <img [src]="product.thumbnail" [alt]="product.title" />
+  <b>{{ product.title }}</b>
+  <div class="product__data">
+    <div class="data">
+      <span>Price</span>
+      <span>{{ product.price }}</span>
+      <mat-icon>euro</mat-icon>
+    </div>
+    <div class="data">
+      <span>Rating</span>
+      <span>{{ product.rating }}</span>
+      <mat-icon>star</mat-icon>
+    </div>
+  </div>
+  @if(product.favorite){
+  <button class="favorite" [class.active]="true">
+    <mat-icon>favorite</mat-icon>
+  </button>
+  }
+</div>
+}

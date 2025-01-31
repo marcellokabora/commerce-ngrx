@@ -1,0 +1,67 @@
+.product {
+  text-decoration: none;
+  background-color: white;
+  margin: 0;
+  padding: 2em;
+  border-radius: 1em;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  gap: 1em;
+  position: relative;
+  transition: all 0.5s;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px 5px rgba(0, 0, 0, 0.2);
+  &:hover {
+    box-shadow: 0px 0px 0px 5px rgba(0, 0, 0, 0.5);
+  }
+  img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    transition: all 0.5s;
+  }
+  &__data {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.5em;
+    background-color: var(--color-primary);
+    width: 100%;
+    border-radius: 1em;
+    padding: 1em;
+    color: white;
+    margin-bottom: -1em;
+    .data {
+      display: flex;
+      align-items: center;
+      gap: 0.2em;
+      mat-icon {
+        zoom: 0.8;
+      }
+    }
+  }
+  .favorite {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    border-radius: 100px;
+    border: none;
+    cursor: pointer;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-primary);
+    color: white;
+    mat-icon {
+      zoom: 0.8;
+    }
+  }
+}

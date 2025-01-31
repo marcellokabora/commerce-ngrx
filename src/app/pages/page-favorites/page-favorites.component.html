@@ -1,5 +1,11 @@
-@let products = products$ | async; @if (products) {
-<app-products [products]="products"></app-products>
+@if (favorites) {
+<section>
+  @for (product of favorites; track $index) {
+  <app-card [product]="product" (favorite)="onFavorite(product)" />
+  }@empty {
+  <div class="empty">This list is empty.</div>
+  }
+</section>
 } @else {
 <div class="loading">
   <mat-spinner diameter="70"></mat-spinner>

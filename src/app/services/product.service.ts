@@ -8,6 +8,7 @@ import { map, Observable } from 'rxjs';
 export class ProductService {
   apiUrl = 'https://dummyjson.com/products';
   httpClient = inject(HttpClient);
+  favorites: Product[] = this.getFavorites();
 
   getProducts(category?: string): Observable<Product[]> {
     let url = `${this.apiUrl}/?limit=50`;
@@ -21,6 +22,24 @@ export class ProductService {
 
   getCategories(): Observable<Category[]> {
     return this.httpClient.get<Category[]>(`${this.apiUrl}/categories`);
+  }
+
+  getFavorites(): Product[] {
+    let favorites = localStorage.getItem('favorites');
+    if (favorites) {
+      this.favorites = JSON.parse(favorites) as Product[];
+      return this.favorites;
+    }
+    return [];
+  }
+
+  addFavorites(product: Product) {
+    this.favorites = [...this.favorites, product];
+    localStorage.setItem('favorites', JSON.stringify(this.favorites));
+  }
+  removeFavorites(product: Product) {
+    this.favorites = this.favorites.filter((value) => value.id !== product.id);
+    localStorage.setItem('favorites', JSON.stringify(this.favorites));
   }
 }
 
@@ -40,4 +59,5 @@ export interface Product {
   favorite: boolean;
   stock: number;
   images: string[];
+  category: string;
 }
