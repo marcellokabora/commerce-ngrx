@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { Product, ProductService } from '../../services/product.service';
+import { Product } from '../../services/product.service';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
@@ -14,11 +14,4 @@ export class ProductComponent {
   data = inject(MAT_DIALOG_DATA);
 
   product: Product = this.data.product;
-  productService = inject(ProductService);
-
-  onFavorite() {
-    this.product.favorite
-      ? this.productService.removeFavorites(this.product)
-      : this.productService.addFavorites(this.product);
-  }
 }

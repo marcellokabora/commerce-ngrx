@@ -12,7 +12,8 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class CardComponent {
   product = input<Product>();
-  removeFavorite = output<boolean>();
+  addFavorite = output<Product>();
+  removeFavorite = output<Product>();
 
   dialog = inject(MatDialog);
 
@@ -24,12 +25,23 @@ export class CardComponent {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      product.favorite = result;
-      console.log(product.favorite);
-
-      if (product.favorite === false) {
-        this.removeFavorite.emit(false);
+      if (result === 'add') {
+        product.favorite = true;
+        this.addFavorite.emit(product);
+      }
+      if (result === 'remove') {
+        product.favorite = false;
+        this.removeFavorite.emit(product);
       }
     });
+  }
+
+  onFavorite(product: Product) {
+    if (product.favorite) {
+      this.removeFavorite.emit(product);
+    } else {
+      this.addFavorite.emit(product);
+    }
+    product.favorite = !product.favorite;
   }
 }

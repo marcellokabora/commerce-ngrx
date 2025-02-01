@@ -8,16 +8,17 @@
 
 <mat-dialog-actions>
   <div class="flex">
-    <span class="data"><mat-icon>euro</mat-icon> {{ product.price }}</span>
-    <span class="data"><mat-icon>inventory</mat-icon> {{ product.stock }}</span>
+    <span class="data"
+      >Price {{ product.price }} <mat-icon>euro</mat-icon></span
+    >
+    <span class="data">Stock {{ product.stock }} </span>
   </div>
 
   <div>
     <button
       mat-button
-      [mat-dialog-close]="!product.favorite"
+      [mat-dialog-close]="product.favorite ? 'remove' : 'add'"
       cdkFocusInitial
-      (click)="onFavorite()"
     >
       {{ product.favorite ? "Remove" : "Add" }} Favorite
     </button>

@@ -18,8 +18,6 @@ export class PageProductsComponent {
   route = inject(ActivatedRoute);
 
   ngOnInit() {
-    this.products$ = this.getProductFavotites();
-
     this.route.queryParams.subscribe((params: Params) => {
       const category = params['category'];
       if (category !== 'all') {
@@ -44,5 +42,12 @@ export class PageProductsComponent {
         return value;
       })
     );
+  }
+
+  addFavorite(product: Product) {
+    this.productService.addFavorites(product);
+  }
+  removeFavorite(product: Product) {
+    this.productService.removeFavorites(product);
   }
 }
