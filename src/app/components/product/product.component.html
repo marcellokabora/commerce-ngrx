@@ -1,27 +1,29 @@
-<h2 mat-dialog-title>{{ product.title }}</h2>
-<mat-dialog-content class="mat-typography">
-  <div class="info">{{ product.description }}</div>
-  @for (image of product.images; track $index) {
-  <img [src]="image" alt="" />
-  }
-</mat-dialog-content>
-
-<mat-dialog-actions>
-  <div class="flex">
-    <span class="data"
-      >Price {{ product.price }} <mat-icon>euro</mat-icon></span
-    >
-    <span class="data">Stock {{ product.stock }} </span>
-  </div>
-
-  <div>
-    <button
-      mat-button
-      [mat-dialog-close]="product.favorite ? 'remove' : 'add'"
-      cdkFocusInitial
-    >
-      {{ product.favorite ? "Remove" : "Add" }} Favorite
-    </button>
-    <button mat-button mat-dialog-close>Close</button>
-  </div>
-</mat-dialog-actions>
+<section>
+  <h2 mat-dialog-title>{{ product.title }}</h2>
+  <mat-dialog-content class="mat-typography">
+    <div class="info">{{ product.description }}</div>
+    <div class="gallery">
+      @for (image of product.images; track $index) {
+      <img [src]="image" alt="" />
+      }
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <div class="flex">
+      <span class="data"
+        >Price {{ product.price }} <mat-icon>euro</mat-icon></span
+      >
+      <span class="data">Stock {{ product.stock }} </span>
+    </div>
+    <div>
+      <button
+        class="favorite"
+        [mat-dialog-close]="product.favorite ? 'remove' : 'add'"
+        cdkFocusInitial
+      >
+        <mat-icon>favorite</mat-icon>
+        <span>{{ product.favorite ? "Remove" : "Add" }}</span>
+      </button>
+    </div>
+  </mat-dialog-actions>
+</section>

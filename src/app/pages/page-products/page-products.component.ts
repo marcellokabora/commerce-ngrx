@@ -21,14 +21,14 @@ export class PageProductsComponent {
     this.route.queryParams.subscribe((params: Params) => {
       const category = params['category'];
       if (category !== 'all') {
-        this.products$ = this.getProductFavotites(category);
+        this.products$ = this.getProduct(category);
       } else {
-        this.products$ = this.getProductFavotites();
+        this.products$ = this.getProduct();
       }
     });
   }
 
-  getProductFavotites(category?: string): Observable<Product[]> {
+  getProduct(category?: string): Observable<Product[]> {
     return this.productService.getProducts(category).pipe(
       map((value: Product[]) => {
         value.map((product) => {

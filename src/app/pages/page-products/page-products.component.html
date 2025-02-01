@@ -1,6 +1,6 @@
 @let products = products$ | async; @if (products) {
-<section>
-  @for (product of products$ | async; track $index) {
+<section class="grid" [style.max-width.px]="products.length * 300">
+  @for (product of products; track product) {
   <app-card
     [product]="product"
     (addFavorite)="addFavorite($event)"

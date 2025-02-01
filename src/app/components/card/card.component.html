@@ -1,22 +1,19 @@
 @let product = this.product(); @if (product) {
 <div class="product">
-  <div class="main" (click)="viewProduct(product)">
+  <div class="container" (click)="viewProduct(product)">
     <img [src]="product.thumbnail" [alt]="product.title" />
-    <b>{{ product.title }}</b>
+    <div class="title">{{ product.title }}</div>
     <div class="product__data">
-      <div class="data">
-        <span>Price</span>
+      <div class="product__data-info">
         <span>{{ product.price }}</span>
         <mat-icon>euro</mat-icon>
       </div>
-      <div class="data">
-        <span>Rating</span>
+      <div class="product__data-info">
         <span>{{ product.rating }}</span>
         <mat-icon>star</mat-icon>
       </div>
     </div>
   </div>
-
   <button
     class="favorite"
     [class.active]="product.favorite"
