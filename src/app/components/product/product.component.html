@@ -1,19 +1,30 @@
 <section>
   <h2 mat-dialog-title>{{ product.title }}</h2>
   <mat-dialog-content class="mat-typography">
-    <div class="info">{{ product.description }}</div>
-    <div class="gallery">
+    <div class="description">{{ product.description }}</div>
+    <div class="stock">Stock {{ product.stock }}</div>
+    <div class="gallery" #gallery>
       @for (image of product.images; track $index) {
       <img [src]="image" alt="" />
       }
     </div>
+    @if (product.images.length>1) {
+    <div class="radios">
+      @for (image of product.images; track $index) {
+      <button (click)="onScroll(gallery, $index)">
+        <mat-icon>{{
+          index === $index ? "radio_button_checked" : "radio_button_unchecked"
+        }}</mat-icon>
+      </button>
+      }
+    </div>
+    }
   </mat-dialog-content>
   <mat-dialog-actions>
     <div class="flex">
       <span class="data"
         >Price {{ product.price }} <mat-icon>euro</mat-icon></span
       >
-      <span class="data">Stock {{ product.stock }} </span>
     </div>
     <div>
       <button

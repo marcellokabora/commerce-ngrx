@@ -51,7 +51,7 @@ body {
   font-size: 1.3em;
 }
 
-section.grid {
+section.products {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1em;

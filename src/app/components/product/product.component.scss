@@ -1,16 +1,39 @@
 section {
+  .description {
+    font-size: 1.2em;
+  }
+  .stock {
+    margin-top: 1em;
+  }
   .gallery {
     display: flex;
     overflow-y: hidden;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    height: 50vh;
+    height: 40vh;
+    position: relative;
+    margin-top: -20px;
+    &::-webkit-scrollbar {
+      display: none;
+    }
     img {
       scroll-snap-align: center;
       width: max-content;
       height: 100%;
       min-width: 100%;
       object-fit: contain;
+    }
+  }
+  .radios {
+    display: flex;
+    justify-content: center;
+    button {
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      opacity: 0.6;
+      zoom: 0.7;
+      color: var(--color-primary);
     }
   }
   mat-dialog-actions {

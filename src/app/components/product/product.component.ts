@@ -12,6 +12,15 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class ProductComponent {
   data = inject(MAT_DIALOG_DATA);
-
+  index: number = 0;
   product: Product = this.data.product;
+
+  onScroll(target: HTMLElement, index: number) {
+    this.index = index;
+    const scrollLeft = 500 * index;
+    target.scrollTo({
+      left: scrollLeft,
+      behavior: 'smooth',
+    });
+  }
 }

@@ -1,6 +1,6 @@
-@if (favorites) {
-<section class="grid" [style.max-width.px]="favorites.length * 300">
-  @for (product of favorites; track $index) {
+@if (products) {
+<section class="products" [style.max-width.px]="products.length * 300">
+  @for (product of products; track product) {
   <app-card [product]="product" (removeFavorite)="removeFavorite(product)" />
   }@empty {
   <div class="empty">This list is empty.</div>

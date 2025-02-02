@@ -13,7 +13,7 @@ import { CardComponent } from '../../components/card/card.component';
 export class PageFavoritesComponent {
   productService = inject(ProductService);
   route = inject(ActivatedRoute);
-  favorites: Product[] = [];
+  products: Product[] = [];
   category: string = '';
 
   ngOnInit() {
@@ -25,9 +25,9 @@ export class PageFavoritesComponent {
 
   getFavoriteCategory() {
     if (this.category && this.category !== 'all') {
-      this.favorites = this.getFavorites(this.category);
+      this.products = this.getFavorites(this.category);
     } else {
-      this.favorites = this.getFavorites();
+      this.products = this.getFavorites();
     }
   }
 

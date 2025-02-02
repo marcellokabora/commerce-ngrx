@@ -1,5 +1,5 @@
 @let products = products$ | async; @if (products) {
-<section class="grid" [style.max-width.px]="products.length * 300">
+<section class="products" [style.max-width.px]="products.length * 300">
   @for (product of products; track product) {
   <app-card
     [product]="product"
