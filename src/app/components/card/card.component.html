@@ -3,12 +3,12 @@
   <div class="container" (click)="viewProduct(product)">
     <img [src]="product.thumbnail" [alt]="product.title" />
     <div class="title">{{ product.title }}</div>
-    <div class="product__data">
-      <div class="product__data-info">
+    <div class="data">
+      <div class="info">
         <span>{{ product.price }}</span>
         <mat-icon>euro</mat-icon>
       </div>
-      <div class="product__data-info">
+      <div class="info">
         <span>{{ product.rating }}</span>
         <mat-icon>star</mat-icon>
       </div>

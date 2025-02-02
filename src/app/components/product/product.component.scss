@@ -43,12 +43,7 @@ section {
     justify-content: space-between;
     margin: 1em;
     border-radius: 1em;
-    .flex {
-      display: flex;
-      align-items: center;
-      gap: 1em;
-    }
-    .data {
+    .price {
       display: flex;
       align-items: center;
       gap: 0.5em;

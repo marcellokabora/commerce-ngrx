@@ -21,20 +21,16 @@
     }
   </mat-dialog-content>
   <mat-dialog-actions>
-    <div class="flex">
-      <span class="data"
-        >Price {{ product.price }} <mat-icon>euro</mat-icon></span
-      >
-    </div>
-    <div>
-      <button
-        class="favorite"
-        [mat-dialog-close]="product.favorite ? 'remove' : 'add'"
-        cdkFocusInitial
-      >
-        <mat-icon>favorite</mat-icon>
-        <span>{{ product.favorite ? "Remove" : "Add" }}</span>
-      </button>
-    </div>
+    <span class="price"
+      >Price {{ product.price }} <mat-icon>euro</mat-icon></span
+    >
+    <button
+      class="favorite"
+      [mat-dialog-close]="product.favorite ? 'remove' : 'add'"
+      cdkFocusInitial
+    >
+      <mat-icon>favorite</mat-icon>
+      <span>{{ product.favorite ? "Remove" : "Add" }}</span>
+    </button>
   </mat-dialog-actions>
 </section>
