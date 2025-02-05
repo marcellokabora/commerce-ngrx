@@ -3,7 +3,7 @@
   @for (product of products; track product) {
   <app-card [product]="product" (removeFavorite)="removeFavorite(product)" />
   }@empty {
-  <div class="empty">Product list is empty.</div>
+  <div class="empty">Favorite list is empty.</div>
   }
 </section>
 } @else {

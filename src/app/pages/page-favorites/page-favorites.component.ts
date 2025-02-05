@@ -24,6 +24,7 @@ export class PageFavoritesComponent {
   }
 
   getFavoriteCategory() {
+    this.products = [];
     if (this.category && this.category !== 'all') {
       this.products = this.getFavorites(this.category);
     } else {
