@@ -17,6 +17,9 @@ export class PageFavoritesComponent {
   category: string = '';
 
   ngOnInit() {
+    window.scroll({
+      top: 0,
+    });
     this.route.queryParams.subscribe((params: Params) => {
       this.category = params['category'];
       this.getFavoriteCategory();
@@ -24,7 +27,6 @@ export class PageFavoritesComponent {
   }
 
   getFavoriteCategory() {
-    this.products = [];
     if (this.category && this.category !== 'all') {
       this.products = this.getFavorites(this.category);
     } else {
