@@ -6,14 +6,14 @@ import { map, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ProductService {
-  apiUrl = 'https://dummyjson.com/products';
+  apiUrl = 'https://dummyjson.com';
   httpClient = inject(HttpClient);
   favorites: Product[] = this.getFavorites();
 
   getProducts(category?: string): Observable<Product[]> {
-    let url = `${this.apiUrl}/?limit=50`;
+    let url = `${this.apiUrl}/products?limit=50`;
     if (category) {
-      url = `${this.apiUrl}/category/${category}`;
+      url = `${this.apiUrl}/products/category/${category}`;
     }
     return this.httpClient
       .get<Product[]>(url)
@@ -21,7 +21,7 @@ export class ProductService {
   }
 
   getCategories(): Observable<Category[]> {
-    return this.httpClient.get<Category[]>(`${this.apiUrl}/categories`);
+    return this.httpClient.get<Category[]>(`${this.apiUrl}/products/categories`);
   }
 
   getFavorites(): Product[] {
@@ -41,6 +41,14 @@ export class ProductService {
     this.favorites = this.favorites.filter((value) => value.id !== product.id);
     localStorage.setItem('favorites', JSON.stringify(this.favorites));
   }
+
+
+  getProduct(id: string): Observable<Product> {
+    return this.httpClient.get<Product>(`${this.apiUrl}/product/${id}`);
+  }
+
+
+
 }
 
 export interface Category {
@@ -51,13 +59,25 @@ export interface Category {
 
 export interface Product {
   id: string;
-  title: string;
-  description: string;
-  price: number;
   thumbnail: string;
-  rating: number;
-  favorite: boolean;
-  stock: number;
-  images: string[];
-  category: string;
+  title: string;
+  price: number;
+  description?: string;
+  images?: string[];
+  favorite?: boolean;
+  category?: string;
+  discountPercentage?: number
+  brand?: string
+  warrantyInformation?: string
+  shippingInformation?: string
+  reviews?: Reviews[]
+  returnPolicy?: string
+  times?: number
 }
+
+export interface Reviews {
+  reviewerName: string;
+  comment: string;
+  date: string;
+}
+

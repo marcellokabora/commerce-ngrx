@@ -1,0 +1,131 @@
+.product {
+    padding: 2em;
+    display: flex;
+    align-items: start;
+    gap: 2em;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.main {
+    flex: 1;
+    display: grid;
+    gap: 2em;
+
+    background-color: white;
+    border-radius: 1em;
+    padding: 1em;
+
+    h3 {
+        font-size: 1.2em;
+        font-weight: bold;
+        border-bottom: 1px solid silver;
+        padding-bottom: 10px;
+    }
+
+    .title {
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+
+    .description {
+        font-size: 1em;
+    }
+
+    .information {
+        display: grid;
+        gap: 1em;
+
+        .infos {
+            display: flex;
+            gap: 1em;
+            text-wrap: nowrap;
+            flex-wrap: wrap;
+
+            .label {
+                font-weight: bold;
+            }
+        }
+    }
+
+    .reviews {
+        display: grid;
+        gap: 1em;
+
+        .review {
+            display: flex;
+            gap: 1em;
+
+            &:not(:last-child) {
+                border-bottom: 1px solid silver;
+                padding-bottom: 10px;
+            }
+
+            .infos {
+                display: flex;
+                justify-content: space-between;
+                flex: 1;
+            }
+        }
+    }
+}
+
+.gallery {
+    display: grid;
+    gap: 1em;
+    img {
+        width: 200px;
+        margin: auto;
+        object-fit: contain;
+        border-radius: 1em;
+        box-shadow: 0px 0px 2px black;
+        background-color: white;
+    }
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+
+    .price {
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+        background-color: rgb(255, 255, 255);
+        padding: 1em 1.5em;
+        border-radius: 100px;
+        cursor: pointer;
+        color: var(--ui-primary);
+        background-color: var(--ui-primary);
+        color: white;
+        flex-wrap: nowrap;
+        text-wrap: nowrap;
+
+        .iconify {
+            font-size: 1.2em;
+        }
+    }
+
+
+    .favorite {
+        border-radius: 100px;
+        border: none;
+        cursor: pointer;
+        height: 40px;
+        width: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid silver;
+
+        &.active {
+            background-color: var(--ui-primary);
+            color: white;
+        }
+
+        &:hover:not(.active) {
+            color: var(--ui-primary);
+        }
+    }
+}

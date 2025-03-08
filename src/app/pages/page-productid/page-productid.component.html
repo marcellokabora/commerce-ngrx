@@ -1,4 +1,67 @@
-<p>page-productid works!</p>
+@let product = product$ | async;
+@if (product) {
+
+<div class="product">
+
+    <div class="gallery">
+        @for (image of product.images; track $index) {
+        <img [src]="image" />
+        }
+    </div>
+
+    <div class="main">
+        <h3 class="title">{{ product.title }}</h3>
+        <div class="description">{{ product.description }}</div>
+
+        <div class="actions">
+            <button class="price" (click)="addCart(product)">
+                <span>Buy {{ product.price }}</span>
+                <mat-icon>euro</mat-icon>
+            </button>
+            <button class="favorite" :class="{ active: product?.favorite }" title="Favorite"
+                (click)="onFavorite(product)">
+                <mat-icon>favorite</mat-icon>
+            </button>
+        </div>
+
+        <div class="information">
+            <h3>Informations</h3>
+            <div class="infos">
+                <div>
+                    <span class="label">Discount:</span> {{ product.discountPercentage }}
+                </div>
+                <div>
+                    <span class="label">Brand:</span> {{ product.brand }}
+                </div>
+                <div>
+                    <span class="label">Warranty:</span> {{ product.warrantyInformation }}
+                </div>
+                <div>
+                    <span class="label">Shipping:</span> {{ product.shippingInformation }}
+                </div>
+                <div>
+                    <span class="label">Return:</span> {{ product.returnPolicy }}
+                </div>
+            </div>
+        </div>
+
+        <div class="reviews">
+            <h3>Reviews</h3>
+            @for (review of product.reviews; track $index) {
+            <div class="review">
+                <img src="https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_1.png" alt="">
+                <div class="infos">
+                    <div class="block">
+                        <div>{{ review.reviewerName }}</div>
+                        <div>{{ review.comment }}</div>
+                    </div>
+                    <small>{{ review.date}}</small>
+                </div>
+            </div>
+            }
+        </div>
 
 
-{{id}}
+    </div>
+</div>
+}

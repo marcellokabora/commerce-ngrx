@@ -3,11 +3,11 @@ import { Product } from '../../services/product.service';
 import { ProductComponent } from '../product/product.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card',
-  imports: [MatIconModule, MatDialogModule, RouterLink],
+  imports: [MatIconModule, MatDialogModule],
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss',
 })
