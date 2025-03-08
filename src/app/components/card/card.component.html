@@ -1,25 +1,21 @@
 @let product = this.product(); @if (product) {
 <div class="product">
-  <div class="container" (click)="viewProduct(product)">
+  <div class="main" (click)="this.router.navigate(['product', product.id]);">
     <img [src]="product.thumbnail" [alt]="product.title" />
     <div class="title">{{ product.title }}</div>
-    <div class="data">
-      <div class="info">
-        <span>{{ product.price }}</span>
-        <mat-icon>euro</mat-icon>
-      </div>
-      <div class="info">
-        <span>{{ product.rating }}</span>
-        <mat-icon>star</mat-icon>
-      </div>
-    </div>
   </div>
-  <button
-    class="favorite"
-    [class.active]="product.favorite"
-    (click)="onFavorite(product)"
-  >
-    <mat-icon>favorite</mat-icon>
-  </button>
+  <div class="buy">
+    <span>BUY </span>
+    <span>{{ product.price }}</span>
+    <mat-icon>euro</mat-icon>
+  </div>
+  <div class="actions">
+    <button class="favorite" [class.active]="product.favorite" (click)="onFavorite(product)">
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <button class="favorite" (click)="viewProduct(product)">
+      <mat-icon>visibility</mat-icon>
+    </button>
+  </div>
 </div>
 }

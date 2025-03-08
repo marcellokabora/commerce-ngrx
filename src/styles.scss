@@ -1,7 +1,7 @@
 @use "@angular/material" as mat;
 
 :root {
-  --color-primary: #f24a0d;
+  --color-primary: #870ef1;
 }
 
 html {
@@ -9,13 +9,18 @@ html {
     (
       color: (
         theme-type: light,
-        primary: mat.$orange-palette,
-        tertiary: mat.$orange-palette,
+        primary: mat.$violet-palette,
+        tertiary: mat.$blue-palette,
       ),
       typography: Roboto,
       density: 0,
     )
   );
+
+  // @include mat.theme-overrides((
+  //   primary: #84ffff
+  // ));
+
 }
 
 html,
@@ -54,7 +59,7 @@ body {
 
 section.products {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 1em;
   padding: 2em;
 }

@@ -15,8 +15,8 @@ nav {
     align-items: center;
     flex-wrap: wrap;
     img {
-      margin-right: 2em;
-      height: 40px;
+      height: 60px;
+      margin: -20 0;
     }
     a {
       color: black;
@@ -41,6 +41,10 @@ nav {
       margin-top: 1em;
       min-width: 250px;
     }
+    .cart{
+      background-color: var(--color-primary);
+      color: white;
+    }
   }
 
   @media (max-width: 500px) {
@@ -52,11 +56,6 @@ nav {
       img {
         width: 100%;
         margin: 0;
-      }
-    }
-    .asider {
-      .label {
-        display: none;
       }
     }
   }

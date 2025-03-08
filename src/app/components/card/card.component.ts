@@ -3,10 +3,11 @@ import { Product } from '../../services/product.service';
 import { ProductComponent } from '../product/product.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-card',
-  imports: [MatIconModule, MatDialogModule],
+  imports: [MatIconModule, MatDialogModule, RouterLink],
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss',
 })
@@ -14,8 +15,8 @@ export class CardComponent {
   product = input<Product>();
   addFavorite = output<Product>();
   removeFavorite = output<Product>();
-
   dialog = inject(MatDialog);
+  router = inject(Router)
 
   viewProduct(product: Product) {
     const dialogRef = this.dialog.open(ProductComponent, {

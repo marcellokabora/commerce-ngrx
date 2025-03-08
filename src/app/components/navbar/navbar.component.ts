@@ -12,6 +12,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { Category, ProductService } from '../../services/product.service';
 import { AsyncPipe, JsonPipe } from '@angular/common';
 import { Observable } from 'rxjs';
+import { MatIcon } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatBadgeModule } from '@angular/material/badge';
 
 @Component({
   selector: 'app-navbar',
@@ -23,6 +26,9 @@ import { Observable } from 'rxjs';
     FormsModule,
     ReactiveFormsModule,
     AsyncPipe,
+    MatIcon,
+    MatButtonModule,
+    MatBadgeModule
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
