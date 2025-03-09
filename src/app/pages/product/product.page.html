@@ -5,7 +5,7 @@
 
     <div class="gallery">
         @for (image of product.images; track $index) {
-        <img [ngSrc]="image" width="200" height="200" />
+        <img [ngSrc]="image" width="200" height="200" priority />
         }
     </div>
 

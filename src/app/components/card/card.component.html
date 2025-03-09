@@ -1,7 +1,7 @@
 @let product = this.product(); @if (product) {
 <div class="product">
   <div class="main" (click)="this.router.navigate(['product', product.id]);">
-    <img [ngSrc]="product.thumbnail" [alt]="product.title" width="200" height="200" />
+    <img [ngSrc]="product.thumbnail" [alt]="product.title" width="200" height="200" priority />
     <div class="title">{{ product.title }}</div>
   </div>
   <div class="buy">
