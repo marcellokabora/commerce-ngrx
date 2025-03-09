@@ -11,16 +11,15 @@
     flex: 1;
     display: grid;
     gap: 2em;
-
     background-color: white;
     border-radius: 1em;
-    padding: 1em;
+    padding: 2em;
 
     h3 {
         font-size: 1.2em;
         font-weight: bold;
         border-bottom: 1px solid silver;
-        padding-bottom: 10px;
+        margin: 0;
     }
 
     .title {
@@ -37,7 +36,8 @@
         gap: 1em;
 
         .infos {
-            display: flex;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
             gap: 1em;
             text-wrap: nowrap;
             flex-wrap: wrap;
@@ -61,6 +61,13 @@
                 padding-bottom: 10px;
             }
 
+            img {
+                width: 60px;
+                height: 60px;
+                object-fit: cover;
+                border-radius: 1em;
+            }
+
             .infos {
                 display: flex;
                 justify-content: space-between;
@@ -73,6 +80,7 @@
 .gallery {
     display: grid;
     gap: 1em;
+
     img {
         width: 200px;
         margin: auto;
@@ -88,24 +96,24 @@
     align-items: center;
     gap: 1em;
 
-    .price {
-        display: flex;
-        align-items: center;
-        gap: 0.5em;
-        background-color: rgb(255, 255, 255);
-        padding: 1em 1.5em;
-        border-radius: 100px;
-        cursor: pointer;
-        color: var(--ui-primary);
-        background-color: var(--ui-primary);
-        color: white;
-        flex-wrap: nowrap;
-        text-wrap: nowrap;
+    // .price {
+    //     display: flex;
+    //     align-items: center;
+    //     gap: 0.5em;
+    //     background-color: rgb(255, 255, 255);
+    //     padding: 1em 1.5em;
+    //     border-radius: 100px;
+    //     cursor: pointer;
+    //     color: var(--ui-primary);
+    //     background-color: var(--ui-primary);
+    //     color: white;
+    //     flex-wrap: nowrap;
+    //     text-wrap: nowrap;
 
-        .iconify {
-            font-size: 1.2em;
-        }
-    }
+    //     .iconify {
+    //         font-size: 1.2em;
+    //     }
+    // }
 
 
     .favorite {
@@ -118,6 +126,8 @@
         align-items: center;
         justify-content: center;
         border: 1px solid silver;
+        box-shadow: none;
+        background-color: transparent;
 
         &.active {
             background-color: var(--ui-primary);

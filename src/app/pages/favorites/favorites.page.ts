@@ -5,12 +5,12 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { CardComponent } from '../../components/card/card.component';
 
 @Component({
-  selector: 'app-page-favorites',
+  selector: 'app-favorites-page',
   imports: [MatProgressSpinnerModule, CardComponent],
-  templateUrl: './page-favorites.component.html',
-  styleUrl: './page-favorites.component.scss',
+  templateUrl: './favorites.page.html',
+  styleUrl: './favorites.page.scss',
 })
-export class PageFavoritesComponent {
+export class FavoritesPage {
   productService = inject(ProductService);
   route = inject(ActivatedRoute);
   products: Product[] = [];

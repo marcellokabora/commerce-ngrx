@@ -3,21 +3,20 @@ import { ActivatedRoute } from '@angular/router';
 import { Product, ProductService } from '../../services/product.service';
 import { MatIconModule } from '@angular/material/icon';
 import { Observable } from 'rxjs';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, DatePipe, NgOptimizedImage } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'app-page-productid',
-  imports: [MatIconModule, AsyncPipe],
-  templateUrl: './page-productid.component.html',
-  styleUrl: './page-productid.component.scss'
+  selector: 'app-product-page',
+  imports: [MatIconModule, AsyncPipe, MatButtonModule, NgOptimizedImage, DatePipe],
+  templateUrl: './product.page.html',
+  styleUrl: './product.page.scss'
 })
-export class PageProductidComponent {
+export class ProductPage {
 
   route = inject(ActivatedRoute);
 
   id = this.route.snapshot.paramMap.get('id')
-
-
 
   productService = inject(ProductService)
 

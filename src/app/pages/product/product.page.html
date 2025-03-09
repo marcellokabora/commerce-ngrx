@@ -5,7 +5,7 @@
 
     <div class="gallery">
         @for (image of product.images; track $index) {
-        <img [src]="image" />
+        <img [ngSrc]="image" width="200" height="200" />
         }
     </div>
 
@@ -14,11 +14,11 @@
         <div class="description">{{ product.description }}</div>
 
         <div class="actions">
-            <button class="price" (click)="addCart(product)">
+            <button mat-flat-button class="price" (click)="addCart(product)">
                 <span>Buy {{ product.price }}</span>
                 <mat-icon>euro</mat-icon>
             </button>
-            <button class="favorite" :class="{ active: product?.favorite }" title="Favorite"
+            <button mat-mini-fab [class.active]="product?.favorite" class="favorite" title="Favorite"
                 (click)="onFavorite(product)">
                 <mat-icon>favorite</mat-icon>
             </button>
@@ -49,13 +49,13 @@
             <h3>Reviews</h3>
             @for (review of product.reviews; track $index) {
             <div class="review">
-                <img src="https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_1.png" alt="">
+                <img src="https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_{{$index+1}}.png" alt="">
                 <div class="infos">
                     <div class="block">
                         <div>{{ review.reviewerName }}</div>
                         <div>{{ review.comment }}</div>
                     </div>
-                    <small>{{ review.date}}</small>
+                    <small>{{ review.date | date}}</small>
                 </div>
             </div>
             }

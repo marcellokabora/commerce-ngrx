@@ -2,33 +2,26 @@
   <h2 mat-dialog-title>{{ product.title }}</h2>
   <mat-dialog-content class="mat-typography">
     <div class="description">{{ product.description }}</div>
-    <div class="stock">Stock {{ product.stock }}</div>
     <div class="gallery" #gallery>
       @for (image of product.images; track $index) {
       <img [src]="image" alt="" />
       }
     </div>
-    @if (product.images.length>1) {
+    @if (product.images && product.images.length>1) {
     <div class="radios">
       @for (image of product.images; track $index) {
       <button (click)="onScroll(gallery, $index)">
-        <mat-icon>{{
-          index === $index ? "radio_button_checked" : "radio_button_unchecked"
-        }}</mat-icon>
+        <mat-icon>
+          {{index === $index ? "radio_button_checked" : "radio_button_unchecked"}}
+        </mat-icon>
       </button>
       }
     </div>
     }
   </mat-dialog-content>
   <mat-dialog-actions>
-    <span class="price"
-      >Price {{ product.price }} <mat-icon>euro</mat-icon></span
-    >
-    <button
-      class="favorite"
-      [mat-dialog-close]="product.favorite ? 'remove' : 'add'"
-      cdkFocusInitial
-    >
+    <span class="price">Price {{ product.price }} <mat-icon>euro</mat-icon></span>
+    <button class="favorite" [mat-dialog-close]="product.favorite ? 'remove' : 'add'" cdkFocusInitial>
       <mat-icon>favorite</mat-icon>
       <span>{{ product.favorite ? "Remove" : "Add" }}</span>
     </button>

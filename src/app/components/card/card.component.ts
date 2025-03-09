@@ -4,10 +4,11 @@ import { ProductComponent } from '../product/product.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-card',
-  imports: [MatIconModule, MatDialogModule],
+  imports: [MatIconModule, MatDialogModule, NgOptimizedImage],
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss',
 })

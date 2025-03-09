@@ -7,12 +7,12 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { CardComponent } from '../../components/card/card.component';
 
 @Component({
-  selector: 'app-page-products',
+  selector: 'app-products-page',
   imports: [AsyncPipe, MatProgressSpinnerModule, CardComponent],
-  templateUrl: './page-products.component.html',
-  styleUrl: './page-products.component.scss',
+  templateUrl: './products.page.html',
+  styleUrl: './products.page.scss',
 })
-export class PageProductsComponent {
+export class ProductsPage {
   products$!: Observable<Product[]>;
   productService = inject(ProductService);
   route = inject(ActivatedRoute);

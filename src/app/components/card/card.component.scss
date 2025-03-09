@@ -9,6 +9,7 @@
   padding: 2em;
   display: grid;
   gap: 1em;
+
   .main {
     text-align: center;
     display: flex;
@@ -18,17 +19,14 @@
     justify-content: space-between;
     gap: 1em;
     cursor: pointer;
-    img {
-      width: auto;
-      height: 200px;
-      transition: all 0.5s;
-    }
+
     .title {
       font-weight: 500;
       height: 40px;
       overflow: hidden;
     }
   }
+
   .buy {
     display: flex;
     align-items: center;
@@ -41,12 +39,14 @@
     margin-bottom: -1em;
     cursor: pointer;
   }
-  .actions{
+
+  .actions {
     position: absolute;
     top: 1em;
     right: 1em;
     display: grid;
     gap: .5em;
+
     .favorite {
       border-radius: 100px;
       border: none;
@@ -56,13 +56,16 @@
       display: flex;
       align-items: center;
       justify-content: center;
+
       mat-icon {
         zoom: 0.8;
       }
+
       &.active {
         background-color: var(--color-primary);
         color: white;
       }
+
       &:hover:not(.active) {
         color: var(--color-primary);
       }
