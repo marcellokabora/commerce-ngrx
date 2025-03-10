@@ -72,7 +72,7 @@ export interface Product {
   shippingInformation?: string
   reviews?: Reviews[]
   returnPolicy?: string
-  times?: number
+  cart?: number
 }
 
 export interface Reviews {

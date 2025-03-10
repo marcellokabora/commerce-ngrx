@@ -36,8 +36,33 @@
     border-radius: 1em;
     padding: 1em;
     color: white;
-    margin-bottom: -1em;
     cursor: pointer;
+    border: none;
+  }
+
+  .cart {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    justify-content: center;
+
+    button {
+      border-radius: 1em;
+      cursor: pointer;
+      height: 40px;
+      width: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--color-primary);
+      border: none;
+      color: white;
+    }
+  }
+
+  .block {
+    height: 50px;
+    margin-bottom: -1em;
   }
 
   .actions {

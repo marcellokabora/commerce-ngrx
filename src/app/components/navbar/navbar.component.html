@@ -14,7 +14,8 @@
         }
       </mat-select>
     </mat-form-field>
-    <button mat-fab class="cart" matBadge="1" matBadgeSize="large" (click)="this.router.navigateByUrl('/shopping')">
+    <button mat-fab class="cart" [matBadge]="(count$|async)" matBadgeSize="large"
+      (click)="this.router.navigateByUrl('/shopping')">
       <mat-icon>shopping_cart</mat-icon>
     </button>
   </form>

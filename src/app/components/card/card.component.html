@@ -4,11 +4,24 @@
     <img [ngSrc]="product.thumbnail" [alt]="product.title" width="200" height="200" priority />
     <div class="title">{{ product.title }}</div>
   </div>
-  <div class="buy">
+  @if(product.cart){
+  <div class="cart block">
+    <button (click)="onCount(product, -1)">
+      <mat-icon>remove</mat-icon>
+    </button>
+    <span>{{product.cart}}</span>
+    <button (click)="onCount(product, 1)">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  }
+  @else {
+  <button class="buy block" (click)="onAddToCart(product)">
     <span>BUY </span>
     <span>{{ product.price }}</span>
     <mat-icon>euro</mat-icon>
-  </div>
+  </button>
+  }
   <div class="actions">
     <button class="favorite" [class.active]="product.favorite" (click)="onFavorite(product)">
       <mat-icon>favorite</mat-icon>

@@ -5,10 +5,13 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import { NgOptimizedImage } from '@angular/common';
+import { Store } from '@ngrx/store';
+import { addToCart } from '../../store/cart.actions';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-card',
-  imports: [MatIconModule, MatDialogModule, NgOptimizedImage],
+  imports: [MatIconModule, MatDialogModule, NgOptimizedImage, MatButtonModule],
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss',
 })
@@ -18,6 +21,7 @@ export class CardComponent {
   removeFavorite = output<Product>();
   dialog = inject(MatDialog);
   router = inject(Router)
+  store = inject(Store)
 
   viewProduct(product: Product) {
     const dialogRef = this.dialog.open(ProductComponent, {
@@ -45,5 +49,14 @@ export class CardComponent {
       this.addFavorite.emit(product);
     }
     product.favorite = !product.favorite;
+  }
+
+  onAddToCart(product: Product) {
+    this.store.dispatch(addToCart(product))
+    product.cart = product.cart ? product.cart + 1 : 1
+  }
+
+  onCount(product: Product, value: number) {
+    product.cart = product.cart ? product.cart + value : 1
   }
 }

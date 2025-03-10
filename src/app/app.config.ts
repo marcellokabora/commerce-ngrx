@@ -9,6 +9,7 @@ import { provideStore } from '@ngrx/store';
 import { todoReducer } from './todos/todo.reducer';
 import { provideEffects } from '@ngrx/effects';
 import { TodoEffects } from './todos/todo.effects';
+import { cartReducer } from './store/cart.reducers';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,7 +18,7 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     provideHttpClient(),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
-    provideStore({ todos: todoReducer }),
+    provideStore({ todos: todoReducer, cart: cartReducer }),
     provideEffects([TodoEffects]),
   ],
 };
