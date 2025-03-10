@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
-import { map, mergeMap, catchError } from 'rxjs/operators';
+import { map, mergeMap, catchError, delay } from 'rxjs/operators';
 import { loadTodos, loadTodosSuccess, loadTodosFailure } from './todo.actions';
 import { Todo } from './todo.model';
 
@@ -12,7 +12,7 @@ export class TodoEffects {
         this.actions$.pipe(
             ofType(loadTodos),
             mergeMap(() => {
-
+                delay(30000)
                 const todos = localStorage.getItem("todos")
                 return of(todos ? JSON.parse(todos) : [] as Todo[]).pipe(
                     map((todos) => loadTodosSuccess({ todos })),

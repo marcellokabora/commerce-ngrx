@@ -13,6 +13,9 @@ import { FormsModule } from '@angular/forms';
     <h1>Todo List</h1>
     <input type="text" [(ngModel)]="newTodoText" placeholder="Add new todo" />
     <button (click)="addTodo()">Add</button>
+     @if(!(todos$ | async)){
+      <div>Loading...</div>
+    }@else {
     <ul>
       <li *ngFor="let todo of todos$ | async">
         <input type="checkbox" [checked]="todo.completed" (change)="toggleTodo(todo.id)" />
@@ -20,6 +23,7 @@ import { FormsModule } from '@angular/forms';
         <button (click)="removeTodo(todo.id)">Remove</button>
       </li>
     </ul>
+    }
   `,
 })
 export class TodoComponent implements OnInit {

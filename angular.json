@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "PlaytestCloud": {
+    "Commerce-NGRX": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -86,10 +86,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "PlaytestCloud:build:production"
+              "buildTarget": "Commerce-NGRX:build:production"
             },
             "development": {
-              "buildTarget": "PlaytestCloud:build:development"
+              "buildTarget": "Commerce-NGRX:build:development"
             }
           },
           "defaultConfiguration": "development"
