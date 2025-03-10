@@ -9,7 +9,7 @@
     <button (click)="onCount(product, -1)">
       <mat-icon>remove</mat-icon>
     </button>
-    <span>{{product.cart}}</span>
+    <span>{{product.cart}} x {{ product.price }}</span>
     <button (click)="onCount(product, 1)">
       <mat-icon>add</mat-icon>
     </button>

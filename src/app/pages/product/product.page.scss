@@ -19,6 +19,7 @@
         font-size: 1.2em;
         font-weight: bold;
         border-bottom: 1px solid silver;
+        padding-bottom: 1em;
         margin: 0;
     }
 
@@ -71,6 +72,7 @@
             .infos {
                 display: flex;
                 justify-content: space-between;
+                align-items: center;
                 flex: 1;
             }
         }
@@ -95,26 +97,6 @@
     display: flex;
     align-items: center;
     gap: 1em;
-
-    // .price {
-    //     display: flex;
-    //     align-items: center;
-    //     gap: 0.5em;
-    //     background-color: rgb(255, 255, 255);
-    //     padding: 1em 1.5em;
-    //     border-radius: 100px;
-    //     cursor: pointer;
-    //     color: var(--ui-primary);
-    //     background-color: var(--ui-primary);
-    //     color: white;
-    //     flex-wrap: nowrap;
-    //     text-wrap: nowrap;
-
-    //     .iconify {
-    //         font-size: 1.2em;
-    //     }
-    // }
-
 
     .favorite {
         border-radius: 100px;

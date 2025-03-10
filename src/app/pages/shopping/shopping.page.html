@@ -1,1 +1,14 @@
-<p>page-shopping works!</p>
+@let products = products$ | async;
+@if (products) {
+<section class="products" [style.max-width.px]="products.length * 300">
+    @for (product of products; track product) {
+    <app-card [product]="product" (addFavorite)="addFavorite($event)" (removeFavorite)="removeFavorite($event)" />
+    }@empty {
+    <div class="empty">Product list is empty.</div>
+    }
+</section>
+} @else {
+<div class="loading">
+    <mat-spinner diameter="70"></mat-spinner>
+</div>
+}

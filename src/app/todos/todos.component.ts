@@ -26,6 +26,7 @@ import { FormsModule } from '@angular/forms';
     }
   `,
 })
+
 export class TodoComponent implements OnInit {
   todos$: Observable<Todo[]>;
   newTodoText = '';

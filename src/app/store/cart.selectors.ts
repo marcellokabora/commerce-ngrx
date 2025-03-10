@@ -1,7 +1,6 @@
 import { createFeatureSelector, createSelector } from "@ngrx/store";
 import { AppState } from "./app.state";
 
-
 export const selectFeatureState = createFeatureSelector<AppState>('cart');
 
 export const cartCount = createSelector(
