@@ -23,7 +23,7 @@ export class ShoppingPage {
 
   ngOnInit() {
 
-    this.store.dispatch(loadCart());
+    // this.store.dispatch(loadCart());
 
 
     // this.route.queryParams.subscribe((params: Params) => {

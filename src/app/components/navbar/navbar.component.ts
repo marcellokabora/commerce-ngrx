@@ -18,6 +18,7 @@ import { MatBadgeModule } from '@angular/material/badge'
 import { Store } from '@ngrx/store'
 import { AppState } from '../../store/app.state'
 import { cartCount } from '../../store/cart.selectors'
+import { loadCart } from '../../store/cart.actions'
 
 @Component({
   selector: 'app-navbar',
@@ -43,9 +44,12 @@ export class NavbarComponent {
   router = inject(Router)
   route = inject(ActivatedRoute)
   store = inject(Store<AppState>)
-  count$: Observable<number> = of(0)
+  count$: Observable<number> = this.store.select(cartCount)
 
   ngOnInit() {
+
+    this.store.dispatch(loadCart());
+
     this.route.queryParams.subscribe((params: Params) => {
       const category = params['category']
       if (category !== 'all') {
@@ -53,7 +57,6 @@ export class NavbarComponent {
       }
     })
     this.categoryList$ = this.productService.getCategories()
-    this.count$ = this.store.select(cartCount)
   }
 
   onChange() {
