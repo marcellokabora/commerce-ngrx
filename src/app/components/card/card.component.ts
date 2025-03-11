@@ -6,7 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import { NgOptimizedImage } from '@angular/common';
 import { Store } from '@ngrx/store';
-import { addToCart } from '../../store/cart.actions';
+import { addMore, addToCart, removeCart } from '../../store/cart.actions';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
@@ -53,10 +53,13 @@ export class CardComponent {
 
   onAddToCart(product: Product) {
     this.store.dispatch(addToCart(product))
-    product.cart = product.cart ? product.cart + 1 : 1
   }
 
-  onCount(product: Product, value: number) {
-    product.cart = product.cart ? product.cart + value : 1
+  onCount(product: Product, count: number) {
+    if (count > 0)
+      this.store.dispatch(addMore({ id: product.id, count }))
+    else
+      this.store.dispatch(removeCart({ id: product.id }))
+
   }
 }

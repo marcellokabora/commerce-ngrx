@@ -7,6 +7,7 @@ import { ActivatedRoute, Params } from '@angular/router'
 import { CardComponent } from '../../components/card/card.component'
 import { Store } from '@ngrx/store'
 import { cartList } from '../../store/cart.selectors'
+import { loadCart } from '../../store/cart.actions'
 
 @Component({
   selector: 'app-page-shopping',
@@ -15,14 +16,15 @@ import { cartList } from '../../store/cart.selectors'
   styleUrl: './shopping.page.scss',
 })
 export class ShoppingPage {
-  products$: Observable<Product[]> = of([])
   productService = inject(ProductService)
   route = inject(ActivatedRoute)
   store = inject(Store)
+  products$: Observable<Product[]> = this.store.select(cartList)
 
   ngOnInit() {
 
-    this.products$ = this.store.select(cartList)
+    this.store.dispatch(loadCart());
+
 
     // this.route.queryParams.subscribe((params: Params) => {
     //   const category = params['category']

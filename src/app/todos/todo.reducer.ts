@@ -27,5 +27,5 @@ export const todoReducer = createReducer(
         localStorage.setItem("todos", JSON.stringify(todos));
         return todos
     }),
-    on(loadTodosSuccess, (state, { todos }) => todos)
+    // on(loadTodosSuccess, (state, { todos }) => todos)
 );

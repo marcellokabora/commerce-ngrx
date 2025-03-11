@@ -6,11 +6,11 @@
   </div>
   @if(product.cart){
   <div class="cart block">
-    <button (click)="onCount(product, -1)">
+    <button (click)="onCount(product, product.cart -1)">
       <mat-icon>remove</mat-icon>
     </button>
     <span>{{product.cart}} x {{ product.price }}</span>
-    <button (click)="onCount(product, 1)">
+    <button (click)="onCount(product, product.cart +1)">
       <mat-icon>add</mat-icon>
     </button>
   </div>
